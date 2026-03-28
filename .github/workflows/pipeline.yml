@@ -1,0 +1,17 @@
+name: ci-cd-pipeline
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+    - name: Build Docker image
+      run: |
+        docker build -t spring-boot:v1 .
